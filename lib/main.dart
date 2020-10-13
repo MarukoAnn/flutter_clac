@@ -47,7 +47,7 @@ class ContentBodyState extends State<ContentBody>{
         new Container(
           padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 20.0,bottom: 10.0),
           width: ScreenUtil().setWidth(750),
-          height: ScreenUtil().setHeight(440),
+          height: ScreenUtil().setHeight(520),
           alignment: Alignment.bottomRight,
           child: new Text(sums, style: new TextStyle(
             fontSize: 46,
@@ -368,7 +368,6 @@ class ContentBodyState extends State<ContentBody>{
               ),
             ],
           ),
-
         )
       ],
     );
