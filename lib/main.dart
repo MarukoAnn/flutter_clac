@@ -44,349 +44,361 @@ class ContentBodyState extends State<ContentBody>{
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Column(
       children: [
-        new Container(
-          padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 20.0,bottom: 10.0),
-          width: ScreenUtil().setWidth(750),
-          height: ScreenUtil().setHeight(520),
-          alignment: Alignment.bottomRight,
-          child: new Text(sums, style: new TextStyle(
-            fontSize: 46,
-            color: Colors.white
-            )
+        Expanded(
+          child: new Container(
+            padding: EdgeInsets.only(top: 10.0, left: 10.0, right: 20.0,bottom: 10.0),
+            child: new Container(
+              width: ScreenUtil().setWidth(750),
+              alignment: Alignment.bottomRight,
+              margin: EdgeInsets.only(top: ScreenUtil().setHeight(160.0)),
+              child: new Text(
+                  sums,
+                  maxLines: 8,
+                  style: new TextStyle(
+                      fontSize: 66,
+                      color: Colors.white
+                  )
+              ),
+            ),
           ),
+          flex: 1,
         ),
-        new Container(
-          padding: EdgeInsets.only(top: 10.0),
-          width: ScreenUtil().setWidth(750),
-          child: Column(
-            children: [
-              new Center(
-                child: new Row(
-                  children: [
-                    Expanded(
-                      child: new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(45)),
-                          color: Colors.grey,
-                          splashColor: Colors.grey,
-                          onPressed: (){btnclick('重置');},
-                          child: new Text('AC', style: new TextStyle(color: Colors.black, fontSize: 20)),
-                          shape: new CircleBorder(side: BorderSide(color: Colors.grey)),
+        Expanded(
+          child: new Container(
+            padding: EdgeInsets.only(top: ScreenUtil().setHeight(102.0)),
+            width: ScreenUtil().setWidth(750),
+            child: Column(
+              children: [
+                new Center(
+                  child: new Row(
+                    children: [
+                      Expanded(
+                        child: new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(45)),
+                            color: Colors.grey,
+                            splashColor: Colors.white,
+                            onPressed: (){btnclick('重置');},
+                            child: new Text('AC', style: new TextStyle(color: Colors.black, fontSize: 20)),
+                            shape: new CircleBorder(side: BorderSide(color: Colors.grey)),
+                          ),
+                          alignment: Alignment.center,
                         ),
-                        alignment: Alignment.center,
+                        flex: 1,
                       ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(45)),
-                          color: Colors.grey,
-                          splashColor: Colors.grey,
-                          onPressed: (){btnclick('加/减');},
-                          child: new Text('+/-', style: new TextStyle(color: Colors.black, fontSize: 20)),
-                          shape: new CircleBorder(side: BorderSide(color: Colors.grey)),
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(45)),
+                            color: Colors.grey,
+                            splashColor: Colors.white,
+                            onPressed: (){btnclick('加/减');},
+                            child: new Text('+/-', style: new TextStyle(color: Colors.black, fontSize: 20)),
+                            shape: new CircleBorder(side: BorderSide(color: Colors.grey)),
+                          ),
+                          alignment: Alignment.center,
                         ),
-                        alignment: Alignment.center,
+                        flex: 1,
                       ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
                             padding: EdgeInsets.all(ScreenUtil().setWidth(40)),
                             color: Colors.grey,
-                            splashColor: Colors.grey,
+                            splashColor: Colors.white,
                             onPressed: (){btnclick('百分号');},
                             child: new Text('%', style: new TextStyle(color: Colors.black, fontSize: 25)),
                             shape: new CircleBorder(side: BorderSide(color: Colors.grey)),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
+                            color: new Color(int.parse(list[0]['bgc'])),
+                            splashColor: new Color(int.parse(list[0]['bgc'])),
+                            onPressed: (){btnclick('除');},
+                            child: new Text('÷', style: new TextStyle(color: new Color(int.parse(list[0]['color'])), fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[0]['bgc'])))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                new Center(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('7');},
+                            child: new Text('7', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child: new  Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('8');},
+                            child: new Text('8', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child: new  Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('9');},
+                            child: new Text('9', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child: new Container(
+                          child: RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
+                            color: new Color(int.parse(list[1]['bgc'])),
+                            splashColor: new Color(int.parse(list[1]['bgc'])),
+                            onPressed: (){btnclick('乘');},
+                            child: new Text('×', style: new TextStyle(color: new Color(int.parse(list[1]['color'])), fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[1]['bgc'])))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                new Center(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('4');},
+                            child: new Text('4', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('5');},
+                            child: new Text('5', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('6');},
+                            child: new Text('6', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
+                            color: new Color(int.parse(list[2]['bgc'])),
+                            splashColor: new Color(int.parse(list[2]['bgc'])),
+                            onPressed: (){btnclick('减');},
+                            child: new Text('—', style: new TextStyle(color: new Color(int.parse(list[2]['color'])), fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[2]['bgc'])))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                new Center(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('1');},
+                            child: new Text('1', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('2');},
+                            child: new Text('2', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: new RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                            color: new Color(0xFF3B3B3B),
+                            splashColor: Colors.grey,
+                            onPressed: (){numClick('3');},
+                            child: new Text('3', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                      Expanded(
+                        child:  new Container(
+                          child: RaisedButton(
+                            padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
+                            color: new Color(int.parse(list[3]['bgc'])),
+                            splashColor: new Color(int.parse(list[3]['bgc'])),
+                            onPressed: (){btnclick('加');},
+                            child: new Text('+', style: new TextStyle(color: new Color(int.parse(list[3]['color'])), fontSize: 30)),
+                            shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[3]['bgc'])))),
+                          ),
+                          alignment: Alignment.center,
+                        ),
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                new Center(
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      new Container(
+                        child: new RaisedButton(
+                          padding: EdgeInsets.only(left: 70.0, top: 20.0, bottom: 20.0, right: 76.0),
+                          color: new Color(0xFF3B3B3B),
+                          splashColor: Colors.grey,
+                          onPressed: (){numClick('0');},
+                          child: new Text('0', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(40)
+                          ),
+                        ),
+                        margin: EdgeInsets.only(left: 10.0),
+                        alignment: Alignment.center,
+                      ),
+                      new Container(
+                        child: new RaisedButton(
+                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
+                          color: new Color(0xFF3B3B3B),
+                          splashColor: Colors.grey,
+                          onPressed: (){numClick('.');},
+                          child: new Text('.', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
                         ),
                         alignment: Alignment.center,
                       ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
+                      new Container(
                         child: RaisedButton(
                           padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
-                          color: new Color(int.parse(list[0]['bgc'])),
-                          splashColor: new Color(int.parse(list[0]['bgc'])),
-                          onPressed: (){btnclick('除');},
-                          child: new Text('÷', style: new TextStyle(color: new Color(int.parse(list[0]['color'])), fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[0]['bgc'])))),
+                          color: Colors.orange,
+                          splashColor: Colors.orange,
+                          onPressed: (){btnclick('等于');},
+                          child: new Text('=', style: new TextStyle(color: Colors.white, fontSize: 30)),
+                          shape: new CircleBorder(side: BorderSide(color: Colors.orange)),
                         ),
                         alignment: Alignment.center,
                       ),
-                      flex: 1,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              new Container(
-                padding: EdgeInsets.all(5.0),
-              ),
-              new Center(
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('7');},
-                          child: new Text('7', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child: new  Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('8');},
-                          child: new Text('8', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child: new  Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('9');},
-                          child: new Text('9', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child: new Container(
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
-                          color: new Color(int.parse(list[1]['bgc'])),
-                          splashColor: new Color(int.parse(list[1]['bgc'])),
-                          onPressed: (){btnclick('乘');},
-                          child: new Text('×', style: new TextStyle(color: new Color(int.parse(list[1]['color'])), fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[1]['bgc'])))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                  ],
-                ),
-              ),
-              new Container(
-                padding: EdgeInsets.all(5.0),
-              ),
-              new Center(
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('4');},
-                          child: new Text('4', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('5');},
-                          child: new Text('5', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('6');},
-                          child: new Text('6', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
-                          color: new Color(int.parse(list[2]['bgc'])),
-                          splashColor: new Color(int.parse(list[2]['bgc'])),
-                          onPressed: (){btnclick('减');},
-                          child: new Text('—', style: new TextStyle(color: new Color(int.parse(list[2]['color'])), fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[2]['bgc'])))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                  ],
-                ),
-              ),
-              new Container(
-                padding: EdgeInsets.all(5.0),
-              ),
-              new Center(
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('1');},
-                          child: new Text('1', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('2');},
-                          child: new Text('2', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: new RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                          color: new Color(0xFF3B3B3B),
-                          splashColor: new Color(0xFF3B3B3B),
-                          onPressed: (){numClick('3');},
-                          child: new Text('3', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                    Expanded(
-                      child:  new Container(
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
-                          color: new Color(int.parse(list[3]['bgc'])),
-                          splashColor: new Color(int.parse(list[3]['bgc'])),
-                          onPressed: (){btnclick('加');},
-                          child: new Text('+', style: new TextStyle(color: new Color(int.parse(list[3]['color'])), fontSize: 30)),
-                          shape: new CircleBorder(side: BorderSide(color: new Color(int.parse(list[3]['bgc'])))),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      flex: 1,
-                    ),
-                  ],
-                ),
-              ),
-              new Container(
-                padding: EdgeInsets.all(5.0),
-              ),
-              new Center(
-                child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    new Container(
-                      child: new RaisedButton(
-                        padding: EdgeInsets.only(left: 70.0, top: 20.0, bottom: 20.0, right: 76.0),
-                        color: new Color(0xFF3B3B3B),
-                        splashColor: new Color(0xFF3B3B3B),
-                        onPressed: (){numClick('0');},
-                        child: new Text('0', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(40)
-                        ),
-                      ),
-                      margin: EdgeInsets.only(left: 10.0),
-                      alignment: Alignment.center,
-                    ),
-                    new Container(
-                      child: new RaisedButton(
-                        padding: EdgeInsets.all(ScreenUtil().setWidth(36)),
-                        color: new Color(0xFF3B3B3B),
-                        splashColor: new Color(0xFF3B3B3B),
-                        onPressed: (){numClick('.');},
-                        child: new Text('.', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                        shape: new CircleBorder(side: BorderSide(color: new Color(0xFF3B3B3B))),
-                      ),
-                      alignment: Alignment.center,
-                    ),
-                    new Container(
-                      child: RaisedButton(
-                        padding: EdgeInsets.all(ScreenUtil().setWidth(34)),
-                        color: Colors.orange,
-                        splashColor: Colors.orange,
-                        onPressed: (){btnclick('等于');},
-                        child: new Text('=', style: new TextStyle(color: Colors.white, fontSize: 30)),
-                        shape: new CircleBorder(side: BorderSide(color: Colors.orange)),
-                      ),
-                      alignment: Alignment.center,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        )
+          flex: 3,
+        ),
       ],
     );
   }
   numClick(e){
-    print(sums);
-    if(e == '.'){
-      setState(() {
-        isDouble = true;
-      });
-    }
     if(sums == '0'){
-      setState(() {
-        sums = e;
-      });
+      if(e == '.'){
+        setState(() {
+          isDouble = true;
+          sums += e;
+        });
+      }else {
+        setState(() {
+          sums = e;
+        });
+      }
     }else{
       if(flag != ''){
         if(tag  ==  0 ){
-          if(sums.length < 14){
+          if(sums.length < 20){
             setState(() {
               sums += e;
             });
@@ -398,7 +410,7 @@ class ContentBodyState extends State<ContentBody>{
           });
         }
       }else{
-        if(sums.length < 14){
+        if(sums.length < 20){
           setState(() {
             sums += e;
           });
@@ -415,6 +427,8 @@ class ContentBodyState extends State<ContentBody>{
     switch(e){
       case '重置': setState(() {
         sums = '0';
+        tag = 0;
+        flag = '';
       });break;
       case '加': setState(() {
         total = sums;
@@ -449,9 +463,14 @@ class ContentBodyState extends State<ContentBody>{
         tag = 1;
         flag = '百分号';
         sums = (int.parse(sums) / 100).toString();
+        isDouble = true;
       });break;
       case '等于':
         sumClac();
+        setState(() {
+          tag = 1;
+          flag = 'true';
+        });
         clacVlaue();
     }
   }
@@ -535,10 +554,10 @@ class ContentBodyState extends State<ContentBody>{
   }
 //  判断计算值
   clacVlaue(){
-    if(sums.length >14){
-      setState(() {
-        sums = sums.substring(0, 14);
-      });
-    }
+//    if(sums.length >10){
+//      setState(() {
+//        sums = sums.substring(0, 10);
+//      });
+//    }
   }
 }
